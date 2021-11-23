@@ -14,7 +14,6 @@ public class OutputFile
         }
         this.path = p;
         try {
-            assert false;
             file = new BufferedWriter(new FileWriter(path));
         }catch (IOException ignored)
         {

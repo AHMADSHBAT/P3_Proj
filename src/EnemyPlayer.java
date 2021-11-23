@@ -13,8 +13,10 @@ public class EnemyPlayer implements Player
         this.HP = hp;
     }
 
+
+
     @Override
-    public void deffeted() {
+    public void defeated() {
         this.HP = 0;
     }
 }

@@ -31,7 +31,7 @@ public class FPS_Player implements Player
         this.points -= p;
     }
 
-    public void deffeted()
+    public void defeated()
     {
         this.HP = 0;
     }
