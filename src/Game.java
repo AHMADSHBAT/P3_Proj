@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -44,6 +45,7 @@ public class Game
         }
         this.lastEnemyIndex++;
         this.outputFile.writeLine("[GAME] new enemy " + this.lastEnemyIndex + " was set");
+        System.out.println("we reach");
         return Statments.SUCCESS;
 
     }
@@ -76,5 +78,6 @@ public class Game
     }
 
     /************************************************/
+
 
 }
