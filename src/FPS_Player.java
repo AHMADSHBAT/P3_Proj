@@ -15,6 +15,10 @@ public class FPS_Player implements Player
         points = p;
     }
 
+    public int getPoints() {
+        return points;
+    }
+
     public void setHP(int HP) {
         this.HP = HP;
     }
@@ -28,7 +32,16 @@ public class FPS_Player implements Player
     }
     public void gotPoints(int p)
     {
-        this.points -= p;
+        this.points += p;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public int getHP() {
+        return HP;
     }
 
     public void defeated()

@@ -3,6 +3,7 @@ public enum Statments{
     EXCEPTION_ERROR,
     INDEXING_ERROR,
     SUCCESS,
+    UNEXPECTED_ERROR
 
 
 }
