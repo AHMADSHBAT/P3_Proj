@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.*;
@@ -5,11 +7,12 @@ import java.util.*;
 public class Game
 {
     FPS_Player userPlayer;
+//    Map<Integer, FPS_Player> userPlayer = new HashMap<Integer, FPS_Player>(5);
     int gameLevel;
     OutputFile outputFile;
     Map<Integer, EnemyPlayer> enemyPlayers = new HashMap<Integer, EnemyPlayer>(5);
     Integer lastEnemyIndex;
-    Game GameInstance;
+    Player_thread_handler thread;
     /************************************************/
 
     Game(){}
@@ -17,13 +20,15 @@ public class Game
 
     /************************************************/
 
-    Game(int gameLevel, FPS_Player fps_player, OutputFile outputFile)
+    Game(int gameLevel, FPS_Player FPS, OutputFile outputFile)
     {
-        this.userPlayer = fps_player;
+        this.userPlayer = FPS;
         this.gameLevel = gameLevel;
         this.outputFile = outputFile;
         this.lastEnemyIndex = -1;
         this.outputFile.writeLine("[GAME] the Game has been initialized.");
+        this.thread = new Player_thread_handler(this, this.userPlayer);
+
     }
 
     /************************************************/
@@ -53,10 +58,10 @@ public class Game
     {
         if(player == null)
         {
-            player = new FPS_Player("AHMAD", 1000, 0);
+            this.outputFile.writeLine("[ERROR] you are trying to insert a null FPS player");
+            return Statments.UNEXPECTED_ERROR;
         }
-        this.outputFile.writeLine("[GAME] FPS player " + player.getName() + " initialized.");
-        this.userPlayer = (FPS_Player) player;
+        this.userPlayer = player;
         return Statments.SUCCESS;
     }
 
@@ -64,8 +69,9 @@ public class Game
     /************************************************/
 
 
-    public Statments enemyPlayerShoots(int index, int hp)
-    {
+    public Statments enemyPlayerShoots(int index, int hp)  {
+        if(this.enemyPlayers.get(index) == null)
+            return Statments.SUCCESS;
         if(index >= 4)
         {
             this.outputFile.writeLine("[ERROR] error with enemy player shooting.");
@@ -74,12 +80,29 @@ public class Game
         this.userPlayer.gotDamage(hp);
         if(this.userPlayer.getHP() <= 0)
         {
-            this.playerDefeated();
+            this.outputFile.writeLine("[Game] Enemy player damaged FPS player with " + hp + " hp and " + this.userPlayer.getHP() + " hp remaining. ");
+            this.outputFile.writeLine("[GAME] GAME OVER!");
+
+            System.exit(0);
         }
         this.outputFile.writeLine("[Game] Enemy player damaged FPS player with " + hp + " hp and " + this.userPlayer.getHP() + " hp remaining. ");
         return Statments.SUCCESS;
 
     }
+
+
+//    public void END() {
+//        try {
+//            OutputFile out = new OutputFile();
+////        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("D:\\Codes\\Proj_java\\src\\output.txt"));
+//            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("D:\\Java\\P3_Proj\\src\\output.txt"));
+//            bufferedWriter.write(this.outputFile.getBufferString());
+//            System.exit(0);
+//        } catch (Exception ignored)
+//        {
+//
+//        }
+//    }
 
 
     /************************************************/
@@ -96,14 +119,17 @@ public class Game
 
     public Statments FPS_player_shoots(int enemyPlayerIndex, int hp)
     {
+
         if( enemyPlayerIndex > 4)
         {
             this.outputFile.writeLine("[ERROR] there is no enemy player with that index.");
             return Statments.UNEXPECTED_ERROR;
         }
+        if(this.enemyPlayers.get(enemyPlayerIndex) == null)
+            return Statments.SUCCESS;
         int i = hp / 2;
         this.FPS_playerGotPoints(i);
-        this.playerGotDamaged(enemyPlayerIndex, hp);
+        this.enemyPlayerGotDamaged(enemyPlayerIndex, hp);
         return Statments.SUCCESS;
     }
 
@@ -135,15 +161,21 @@ public class Game
     }
 
     /************************************************/
-        public void playerGotDamaged(int index, int hp)
+        public void enemyPlayerGotDamaged(int index, int hp)
         {
-            try{
+            if(this.enemyPlayers.get(index) != null)
                 this.enemyPlayers.get(index).gotDamage(hp);
+            else
+                return;
+            try{
+
                 if(enemyPlayers.get(index).HP <= 0)
                 {
                     enemyKilled(index);
+                    return;
                 }
-                this.outputFile.writeLine("[Game] Player index " + index + " has got damaged " + hp + " hp.");
+                this.outputFile.writeLine("[Game] Player index " + index + " has got damaged " + hp + " hp, remaining "
+                                            + this.enemyPlayers.get(index).HP);
             } catch (Exception e)
             {
                 this.outputFile.writeLine("[ERROR] " + e);
@@ -151,9 +183,12 @@ public class Game
         }
     /************************************************/
 
-    public Statments playerDefeated()
+    public Statments FPS_got_damaged(int i)
     {
-        this.userPlayer.defeated();
+
+//        this.userPlayer.defeated();
+        this.userPlayer.gotDamage(i);
+        this.outputFile.writeLine("[GAME] FPS player got damaged "+i+" and remaining " + this.userPlayer.getHP());
         this.outputFile.writeLine("[GAME] you have been defeated XD.");
         return Statments.SUCCESS;
     }
@@ -165,6 +200,40 @@ public class Game
     }
 
     /************************************************/
+
+    public static class Player_thread_handler extends Thread {
+        FPS_Player player;
+        Game g;
+        Player_thread_handler( Game g, FPS_Player i )
+        {
+            this.player = i;
+            this.g = g;
+        }
+
+        @Override
+        public void run()
+        {
+            Integer i =0;
+            boolean bool = false;
+            while(!bool)
+            {
+                for (Object e : this.g.enemyPlayers.values()) {
+                    if(e == null)
+                    {
+                        bool = true;
+                        break;
+                    }
+                }
+            }
+            this.g.YOUWIN();
+        }
+
+    }
+
+    private void YOUWIN(){
+        this.outputFile.writeLine("[game] you won!");
+        System.exit(0);
+    }
 
 
 }

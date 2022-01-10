@@ -1,0 +1,15 @@
+[GAME] the Game has been initialized.
+[GAME] new enemy 0 was set
+[GAME] new enemy 1 was set
+[GAME] new enemy 2 was set
+[GAME] new enemy 3 was set
+[GAME] new enemy 4 was set
+[GAME] FPS player got extra points +48. now he has 48 totally.
+[Game] Player index 1 has got damaged 97 hp, remaining 3
+[Game] Enemy player damaged FPS player with 34 hp and 66 hp remaining. 
+[GAME] FPS player got extra points +37. now he has 85 totally.
+[GAME] the enemy index: 1was killed.
+[GAME] FPS player got extra points +86. now he has 171 totally.
+[GAME] the enemy index: 3was killed.
+[Game] Enemy player damaged FPS player with 88 hp and -22 hp remaining. 
+[GAME] GAME OVER!

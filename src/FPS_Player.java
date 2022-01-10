@@ -3,6 +3,7 @@ public class FPS_Player implements Player
     String name;
     int HP;
     int points;
+    boolean Win = false;
     FPS_Player(){
         name = "untitled";
         HP = 0;
