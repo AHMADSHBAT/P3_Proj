@@ -16,6 +16,7 @@ public class OutputFile
 
     public void writeLine(String s)
     {
+        System.out.println(s);
         try {
             File file = new File("output.txt");
 

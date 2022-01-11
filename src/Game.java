@@ -7,7 +7,7 @@ import java.util.*;
 public class Game
 {
     FPS_Player userPlayer;
-//    Map<Integer, FPS_Player> userPlayer = new HashMap<Integer, FPS_Player>(5);
+    int enemysCount;
     int gameLevel;
     OutputFile outputFile;
     Map<Integer, EnemyPlayer> enemyPlayers = new HashMap<Integer, EnemyPlayer>(5);
@@ -28,10 +28,18 @@ public class Game
         this.lastEnemyIndex = -1;
         this.outputFile.writeLine("[GAME] the Game has been initialized.");
         this.thread = new Player_thread_handler(this, this.userPlayer);
+        this.thread.start();
+
 
     }
 
     /************************************************/
+
+
+    public void setEnemysCount(int i)
+    {
+        this.enemysCount = i;
+    }
 
 
     public Statments enemySet(EnemyPlayer e)
@@ -41,6 +49,7 @@ public class Game
 
         try {
             getEnemyPlayers().put(this.lastEnemyIndex + 1, e);
+//            this.enemyPlayers.get(this.lastEnemyIndex).setIndex(this.lastEnemyIndex);
         } catch (UnsupportedOperationException ex)
         {
             this.outputFile.writeLine("[error] we can't add enemy player to the game." + ex);
@@ -125,7 +134,7 @@ public class Game
             this.outputFile.writeLine("[ERROR] there is no enemy player with that index.");
             return Statments.UNEXPECTED_ERROR;
         }
-        if(this.enemyPlayers.get(enemyPlayerIndex) == null)
+        if(this.enemyPlayers.get(enemyPlayerIndex).getHP() <= 0)
             return Statments.SUCCESS;
         int i = hp / 2;
         this.FPS_playerGotPoints(i);
@@ -150,12 +159,11 @@ public class Game
     /************************************************/
     public Statments enemyKilled(int i)
     {
-        if(this.enemyPlayers.get(i) == null)
+        if(this.enemyPlayers.get(i).getHP() == 0)
         {
             this.outputFile.writeLine("[error] there are no enemy player with this index.");
             return  Statments.INDEXING_ERROR;
         }
-        this.enemyPlayers.remove(i);
         this.outputFile.writeLine("[GAME] the enemy index: " + i + "was killed.");
         return  Statments.SUCCESS;
     }
@@ -213,16 +221,21 @@ public class Game
         @Override
         public void run()
         {
-            Integer i =0;
+            int i = 0;
             boolean bool = false;
-            while(!bool)
-            {
-                for (Object e : this.g.enemyPlayers.values()) {
-                    if(e == null)
-                    {
-                        bool = true;
-                        break;
-                    }
+            while(true) {
+                for (EnemyPlayer e : this.g.enemyPlayers.values()) {
+//                    System.out.println("hello");
+                    if (e.getHP() <= 0)
+                        i++;
+                }
+                if(i > 2)
+                    break;
+                i = 0;
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
             this.g.YOUWIN();
