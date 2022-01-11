@@ -17,6 +17,11 @@ public class Game
     Map<Integer, EnemyPlayer> enemyPlayers = new HashMap<Integer, EnemyPlayer>(5);
     Integer lastEnemyIndex;
     Player_thread_handler thread;
+    Player_thread_handler1 thread1;
+
+    Thread outsideThread;
+    boolean win = false;
+    boolean exit = false;
     static int id = 0;
     /************************************************/
 
@@ -33,9 +38,18 @@ public class Game
         this.lastEnemyIndex = -1;
         this.outputFile.writeLine("[GAME] the Game has been initialized.");
         this.thread = new Player_thread_handler(this, this.userPlayer);
+        this.thread1 = new Player_thread_handler1(this);
+
         this.thread.start();
+        this.thread1.start();
 
 
+
+    }
+
+    public void setThread(Thread t)
+    {
+        this.outsideThread = t;
     }
 
     /************************************************/
@@ -54,7 +68,6 @@ public class Game
 
         try {
             getEnemyPlayers().put(this.lastEnemyIndex + 1, e);
-//            this.enemyPlayers.get(this.lastEnemyIndex).setIndex(this.lastEnemyIndex);
         } catch (UnsupportedOperationException ex)
         {
             this.outputFile.writeLine("[error] we can't add enemy player to the game." + ex);
@@ -95,7 +108,7 @@ public class Game
         if(this.userPlayer.getHP() <= 0)
         {
             this.outputFile.writeLine("[Game] Enemy player damaged FPS player with " + hp + " hp and " + this.userPlayer.getHP() + " hp remaining. ");
-            this.outputFile.writeLine("[GAME] GAME OVER!");
+            this.exit = true;
             try {
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/EXAMPLE", "root", "aaaaaa");
                 Statement stmt = null;
@@ -116,19 +129,6 @@ public class Game
 
     }
 
-
-//    public void END() {
-//        try {
-//            OutputFile out = new OutputFile();
-////        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("D:\\Codes\\Proj_java\\src\\output.txt"));
-//            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("D:\\Java\\P3_Proj\\src\\output.txt"));
-//            bufferedWriter.write(this.outputFile.getBufferString());
-//            System.exit(0);
-//        } catch (Exception ignored)
-//        {
-//
-//        }
-//    }
 
 
     /************************************************/
@@ -239,15 +239,19 @@ public class Game
         public void run()
         {
             int i = 0;
-            boolean bool = false;
             while(true) {
                 for (EnemyPlayer e : this.g.enemyPlayers.values()) {
 //                    System.out.println("hello");
                     if (e.getHP() <= 0)
                         i++;
                 }
-                if(i > 2)
+                if(i > 2) {
+                    this.g.YOUWIN();
+                    System.out.println("you reached");
+                    this.g.outsideThread.interrupt();
+
                     break;
+                }
                 i = 0;
                 try {
                     Thread.sleep(5);
@@ -255,10 +259,35 @@ public class Game
                     e.printStackTrace();
                 }
             }
-            this.g.YOUWIN();
+
         }
 
     }
+    public static class Player_thread_handler1 extends Thread {
+        Game g;
+        Player_thread_handler1( Game g )
+        {
+            this.g = g;
+        }
+
+        @Override
+        public void run()
+        {
+            while(!this.g.exit) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            this.g.YOULOSE();
+            System.out.println("you reached");
+            this.g.outsideThread.interrupt();
+            }
+
+        }
+
+
 
     private void YOUWIN(){
         this.outputFile.writeLine("[game] you won!");
@@ -266,15 +295,35 @@ public class Game
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/EXAMPLE", "root", "aaaaaa");
             Statement stmt = null;
-            String query = "INSERT INTO p (id, ename, points) VALUES("+ id++ + "," + this.userPlayer.getName() + "," + this.userPlayer.getPoints() + ")";
+            String query = "INSERT INTO p (id, ename, points) VALUES("+ id++ + ",'" + this.userPlayer.getName() + "'," + this.userPlayer.getPoints() + ")";
+            stmt = conn.createStatement();
+            stmt.execute(query);
+            this.win = true;
+        }catch (Exception e)
+        {
+            System.out.println(e);
+            System.exit(0);
+        }
+
+    }
+
+    private void YOULOSE(){
+        this.outputFile.writeLine("[game] YOU LOSE, GAME OVER!");
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/EXAMPLE", "root", "aaaaaa");
+            Statement stmt = null;
+            String query = "INSERT INTO p (id, ename, points) VALUES("+ id++ + ",'" + this.userPlayer.getName() + "'," + this.userPlayer.getPoints() + ")";
             stmt = conn.createStatement();
             stmt.execute(query);
         }catch (Exception e)
         {
             System.out.println(e);
+            System.exit(0);
         }
-        System.exit(0);
+
     }
+
 
 
 }

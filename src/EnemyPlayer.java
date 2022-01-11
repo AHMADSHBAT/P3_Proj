@@ -1,4 +1,4 @@
-public class EnemyPlayer implements Player
+public class EnemyPlayer extends Playerabs
 {
     int HP;
     int index;

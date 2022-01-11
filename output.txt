@@ -4,115 +4,14 @@
 [GAME] new enemy 2 was set
 [GAME] new enemy 3 was set
 [GAME] new enemy 4 was set
-[GAME] FPS player got extra points +39. now he has 39 totally.
-[Game] Player index 1 has got damaged 78 hp, remaining 22
-[Game] Enemy player damaged FPS player with 9 hp and 91 hp remaining. 
-[GAME] FPS player got extra points +14. now he has 53 totally.
-[GAME] the enemy index: 1was killed.
-[GAME] FPS player got extra points +84. now he has 137 totally.
-[GAME] the enemy index: 3was killed.
-[Game] Enemy player damaged FPS player with 5 hp and 86 hp remaining. 
-[GAME] FPS player got extra points +11. now he has 148 totally.
-[Game] Player index 2 has got damaged 22 hp, remaining 78
-[GAME] FPS player got extra points +21. now he has 169 totally.
-[Game] Player index 2 has got damaged 43 hp, remaining 35
-[GAME] FPS player got extra points +90. now he has 259 totally.
-[GAME] the enemy index: 0was killed.
-[GAME] FPS player got extra points +81. now he has 340 totally.
+[GAME] FPS player got extra points +12. now he has 12 totally.
+[Game] Player index 3 has got damaged 24 hp, remaining 76
+[Game] Enemy player damaged FPS player with 6 hp and 94 hp remaining. 
+[GAME] FPS player got extra points +17. now he has 29 totally.
+[Game] Player index 1 has got damaged 34 hp, remaining 66
+[GAME] FPS player got extra points +85. now he has 114 totally.
 [GAME] the enemy index: 2was killed.
-[Game] Enemy player damaged FPS player with 9 hp and 77 hp remaining. 
-[Game] Enemy player damaged FPS player with 8 hp and 69 hp remaining. 
-[game] you won!
-[Game] Enemy player damaged FPS player with 8 hp and 61 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 54 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 47 hp remaining. 
-[Game] Enemy player damaged FPS player with 3 hp and 44 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 37 hp remaining. 
-[Game] Enemy player damaged FPS player with 1 hp and 36 hp remaining. 
-[Game] Enemy player damaged FPS player with 2 hp and 34 hp remaining. 
-[Game] Enemy player damaged FPS player with 5 hp and 29 hp remaining. 
-[Game] Enemy player damaged FPS player with 3 hp and 26 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 19 hp remaining. 
-[Game] Enemy player damaged FPS player with 5 hp and 14 hp remaining. 
-[Game] Enemy player damaged FPS player with 3 hp and 11 hp remaining. 
-[Game] Enemy player damaged FPS player with 0 hp and 11 hp remaining. 
-[Game] Enemy player damaged FPS player with 1 hp and 10 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 3 hp remaining. 
-[Game] Enemy player damaged FPS player with 5 hp and -2 hp remaining. 
-[GAME] GAME OVER!
-[GAME] the Game has been initialized.
-[GAME] new enemy 0 was set
-[GAME] new enemy 1 was set
-[GAME] new enemy 2 was set
-[GAME] new enemy 3 was set
-[GAME] new enemy 4 was set
-[GAME] FPS player got extra points +37. now he has 37 totally.
-[Game] Player index 0 has got damaged 75 hp, remaining 25
-[Game] Enemy player damaged FPS player with 9 hp and 91 hp remaining. 
-[GAME] FPS player got extra points +58. now he has 95 totally.
-[GAME] the enemy index: 2was killed.
-[GAME] FPS player got extra points +63. now he has 158 totally.
-[GAME] the enemy index: 3was killed.
-[Game] Enemy player damaged FPS player with 9 hp and 82 hp remaining. 
-[GAME] FPS player got extra points +76. now he has 234 totally.
-[GAME] the enemy index: 1was killed.
-[GAME] FPS player got extra points +28. now he has 262 totally.
+[Game] Enemy player damaged FPS player with 4 hp and 90 hp remaining. 
+[GAME] FPS player got extra points +56. now he has 170 totally.
 [GAME] the enemy index: 0was killed.
-[Game] Enemy player damaged FPS player with 9 hp and 73 hp remaining. 
-[Game] Enemy player damaged FPS player with 9 hp and 64 hp remaining. 
-[Game] Enemy player damaged FPS player with 5 hp and 59 hp remaining. 
-[Game] Enemy player damaged FPS player with 0 hp and 59 hp remaining. 
-[Game] Enemy player damaged FPS player with 0 hp and 59 hp remaining. 
-[Game] Enemy player damaged FPS player with 3 hp and 56 hp remaining. 
-[Game] Enemy player damaged FPS player with 6 hp and 50 hp remaining. 
-[Game] Enemy player damaged FPS player with 6 hp and 44 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 37 hp remaining. 
-[game] you won!
-[Game] Enemy player damaged FPS player with 9 hp and 28 hp remaining. 
-[Game] Enemy player damaged FPS player with 1 hp and 27 hp remaining. 
-[Game] Enemy player damaged FPS player with 2 hp and 25 hp remaining. 
-[Game] Enemy player damaged FPS player with 8 hp and 17 hp remaining. 
-[Game] Enemy player damaged FPS player with 8 hp and 9 hp remaining. 
-[Game] Enemy player damaged FPS player with 0 hp and 9 hp remaining. 
-[Game] Enemy player damaged FPS player with 2 hp and 7 hp remaining. 
-[Game] Enemy player damaged FPS player with 1 hp and 6 hp remaining. 
-[Game] Enemy player damaged FPS player with 6 hp and 0 hp remaining. 
-[GAME] GAME OVER!
-[GAME] the Game has been initialized.
-[GAME] new enemy 0 was set
-[GAME] new enemy 1 was set
-[GAME] new enemy 2 was set
-[GAME] new enemy 3 was set
-[GAME] new enemy 4 was set
-[GAME] FPS player got extra points +2. now he has 2 totally.
-[Game] Player index 1 has got damaged 5 hp, remaining 95
-[Game] Enemy player damaged FPS player with 8 hp and 92 hp remaining. 
-[GAME] FPS player got extra points +21. now he has 23 totally.
-[Game] Player index 0 has got damaged 42 hp, remaining 58
-[GAME] FPS player got extra points +86. now he has 109 totally.
-[GAME] the enemy index: 1was killed.
-[Game] Enemy player damaged FPS player with 0 hp and 92 hp remaining. 
-[GAME] FPS player got extra points +69. now he has 178 totally.
-[GAME] the enemy index: 2was killed.
-[GAME] FPS player got extra points +48. now he has 226 totally.
-[GAME] the enemy index: 0was killed.
-[GAME] FPS player got extra points +83. now he has 309 totally.
-[GAME] the enemy index: 3was killed.
-[Game] Enemy player damaged FPS player with 5 hp and 87 hp remaining. 
-[Game] Enemy player damaged FPS player with 9 hp and 78 hp remaining. 
-[Game] Enemy player damaged FPS player with 3 hp and 75 hp remaining. 
-[Game] Enemy player damaged FPS player with 3 hp and 72 hp remaining. 
-[Game] Enemy player damaged FPS player with 9 hp and 63 hp remaining. 
-[Game] Enemy player damaged FPS player with 8 hp and 55 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 48 hp remaining. 
-[Game] Enemy player damaged FPS player with 5 hp and 43 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 36 hp remaining. 
-[Game] Enemy player damaged FPS player with 6 hp and 30 hp remaining. 
-[Game] Enemy player damaged FPS player with 5 hp and 25 hp remaining. 
-[Game] Enemy player damaged FPS player with 5 hp and 20 hp remaining. 
-[Game] Enemy player damaged FPS player with 7 hp and 13 hp remaining. 
-[Game] Enemy player damaged FPS player with 4 hp and 9 hp remaining. 
-[Game] Enemy player damaged FPS player with 6 hp and 3 hp remaining. 
-[game] you won!
-[Game] Enemy player damaged FPS player with 3 hp and 0 hp remaining. 
-[GAME] GAME OVER!
+[Game] Enemy player damaged FPS player with 2 hp and 88 hp remaining. 

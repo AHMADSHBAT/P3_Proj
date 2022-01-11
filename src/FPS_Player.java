@@ -1,4 +1,4 @@
-public class FPS_Player implements Player
+public class FPS_Player extends Playerabs implements Player
 {
     String name;
     int HP;
