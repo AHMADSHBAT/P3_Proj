@@ -1,6 +1,10 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -13,6 +17,7 @@ public class Game
     Map<Integer, EnemyPlayer> enemyPlayers = new HashMap<Integer, EnemyPlayer>(5);
     Integer lastEnemyIndex;
     Player_thread_handler thread;
+    static int id = 0;
     /************************************************/
 
     Game(){}
@@ -91,6 +96,18 @@ public class Game
         {
             this.outputFile.writeLine("[Game] Enemy player damaged FPS player with " + hp + " hp and " + this.userPlayer.getHP() + " hp remaining. ");
             this.outputFile.writeLine("[GAME] GAME OVER!");
+            try {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/EXAMPLE", "root", "aaaaaa");
+                Statement stmt = null;
+                String query = "INSERT INTO p VALUES("+ id++ + ",'" + this.userPlayer.getName() + "'," + this.userPlayer.getPoints() + ")";
+                stmt = conn.createStatement();
+                stmt.execute(query);
+                stmt.close();
+
+            }catch (Exception e)
+            {
+                System.out.println(e);
+            }
 
             System.exit(0);
         }
@@ -245,6 +262,17 @@ public class Game
 
     private void YOUWIN(){
         this.outputFile.writeLine("[game] you won!");
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/EXAMPLE", "root", "aaaaaa");
+            Statement stmt = null;
+            String query = "INSERT INTO p (id, ename, points) VALUES("+ id++ + "," + this.userPlayer.getName() + "," + this.userPlayer.getPoints() + ")";
+            stmt = conn.createStatement();
+            stmt.execute(query);
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
         System.exit(0);
     }
 
